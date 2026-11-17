@@ -11,5 +11,5 @@ ENV STREAMLIT_SERVER_ADDRESS=0.0.0.0
 ENV STREAMLIT_SERVER_HEADLESS=true
 ENV STREAMLIT_SERVER_BASE_URL_PATH=threat-dashboard
 
-EXPOSE 8501
-CMD ["sh", "-c", "streamlit run app.py --server.port ${PORT:-8501}"]
+EXPOSE 80
+CMD ["sh", "-c", "streamlit run app.py --server.port ${PORT:-80}"]
