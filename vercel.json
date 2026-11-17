@@ -1,0 +1,29 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "services": {
+    "app": {
+      "root": ".",
+      "runtime": "container",
+      "entrypoint": "Dockerfile"
+    },
+    "threat-dashboard": {
+      "root": "threat-dashboard",
+      "runtime": "container",
+      "entrypoint": "Dockerfile"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/threat-dashboard",
+      "destination": { "service": "threat-dashboard" }
+    },
+    {
+      "source": "/threat-dashboard/(.*)",
+      "destination": { "service": "threat-dashboard" }
+    },
+    {
+      "source": "/(.*)",
+      "destination": { "service": "app" }
+    }
+  ]
+}
