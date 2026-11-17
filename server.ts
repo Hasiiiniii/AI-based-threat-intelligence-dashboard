@@ -157,9 +157,10 @@ async function startServer() {
     });
     app.use(vite.middlewares);
   } else {
-    app.use(express.static(path.resolve(__dirname, 'dist')));
+    const clientDist = path.resolve(__dirname);
+    app.use(express.static(clientDist));
     app.get('*', (_req, res) => {
-      res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
+      res.sendFile(path.resolve(clientDist, 'index.html'));
     });
   }
 
