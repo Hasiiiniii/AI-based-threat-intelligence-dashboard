@@ -3,7 +3,9 @@ FROM node:22-alpine
 WORKDIR /app
 
 COPY package.json ./
-RUN npm install
+# Vite 8 declares a newer optional esbuild peer than the version locked for
+# the server bundle; Bun accepts this graph, so keep npm from rejecting it.
+RUN npm install --legacy-peer-deps
 
 COPY . .
 RUN npm run build
